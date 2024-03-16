@@ -1,0 +1,92 @@
+.homecontent{
+  background: url("../Assets/pictures/bg3.jpg") center/cover;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+
+}
+/*C’est ce qui contient le texte*/
+#homeContentText{
+  
+  color:white;
+  font-size: 3.5rem;
+  padding: 60px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-shadow: 0px 0px 0px black;
+}
+
+#textitself{
+  width: 60vw;
+  background: rgba(128, 128, 128, 0.61);
+  padding: 20px;
+}
+.homeContact{
+  height: 10vh;
+  opacity: 0.5;
+  width: 100vw;
+  background: white;
+  position: absolute;
+  /* transform: translateY(3vh); */
+  bottom: 0;
+}
+
+.presentation{
+  height: 100vh;
+  background:rgb(38,138,125) ;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+
+}
+.presentationContent{
+  display: flex;
+  align-items: center;
+  margin: 10px 0 10px;
+}
+#presentationTxt{
+  width: 60vw;
+  font-size: 2.5rem;
+  color: white;
+  padding: 50px;
+}
+
+
+.contact{
+  background: grey;
+  margin: 10px 0 10px;
+  width: 80%;
+  max-width: 1000px;
+  /* display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around; */
+
+}
+.network{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.networkDet{
+  display: flex;
+  width: 25%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  /* border-right: 1px dashed black; */
+}
+
+.icon{
+  margin: 0 10px 0 10px;
+}
+
+.icon:hover{
+  transform: scale(1.2);
+}
