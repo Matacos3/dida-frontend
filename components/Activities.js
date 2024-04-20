@@ -1,7 +1,7 @@
 import styles from "../styles/Activities.module.css"
 import Image from "next/image";
 import hands from "../Assets/pictures/timetable.webp";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
@@ -37,35 +37,49 @@ function Activities(props) {
       imgPath: "french_class"
     },
   ]
+
+  const [positionOfActivityToDisplay, setPositionOfActivityToDisplay] = useState(0)
+  console.log(activitiesData[positionOfActivityToDisplay])
   const [activityBool, setActivityBool] = useState(activitiesData.map((information, index) => false))
 
+  const [isModalVisible, setIsModalVisible] = useState(false)
+
+  //state setting which datas are going to be displayed
+
+
+  const [selectedDatas, setSelectedDatas] = useState(null)
+
+  //la div est la même, elle est ici, le contenu est dans le composant activitity, il est choisi en fonction de l’image qui est cliquée
   //fonction de display des activités
 
-  const displayactivity = (position) => {
-    console.log(activityBool)
-    setActivityBool(activityBool.map((data, index) => {
-      if (index === position) {
-        return !data
-      } else {
-        return false
-      }
-    }))
+
+
+  //function to determine which activity is going to be displayed, and to set the modal to visible
+
+  const displayactivity = (key) => {
+    if(!isModalVisible){
+
+      console.log("we will display activity")
+      //set modal to true 
+      setIsModalVisible(true)
+      //set position of information to display
+      setPositionOfActivityToDisplay(key)
+    }
   }
 
 
-  
 
   const activitiesToDisplay = activitiesData.map((datas, i) => {
 
     return (
-      <div style={{margin:"10px"}}key={i}>
+      <div style={{ margin: "10px" }} key={i}>
         <Image style={{ cursor: "pointer" }} src={`/${datas.imgPath}.png`} width={500} height={400} onClick={() => displayactivity(i)} />
         {/* <img src={`${datas.imgPath}.png`}/> */}
         {/* <p>{datas.name}</p> */}
-        <div style={{ top: activityBool[i] === false ? "-50vh" : "50vh", background:`url(/${datas.imgPath}.png) left bottom 50%` }} className={styles.actSubSection} >
-          {/* <Image src={`/${datas.imgPath}.png`} layout="fill" className={styles.bgImg} /> */}
+        <div style={{ top: activityBool[i] === false ? "-50vh" : "50vh", background: `url(/${datas.imgPath}.png) left bottom 50%` }} className={styles.actSubSection} >
+          <Image src={`/${datas.imgPath}.png`} layout="fill" className={styles.bgImg} />
           <div className={styles.subsectiontext}>
-          <h2>{datas.name}</h2>
+            <h2>{datas.name}</h2>
             <FontAwesomeIcon icon={faXmark} style={{ position: "absolute", top: "15px", right: "20px", height: "30px", cursor: "pointer" }} onClick={() => displayactivity(i)} />
             <p>{datas.description}</p>
             <p>{datas.time}</p>
@@ -75,11 +89,40 @@ function Activities(props) {
     )
   })
 
-  const activitiesToDisplay2 = activitiesData.map((datas,i)=>{
-    return(
-      <Activity key={i} src={datas.imgPath} description={datas.description} time={datas.time} name={datas.name} />
+  const activitiesToDisplay2 = activitiesData.map((datas, i) => {
+    return (
+      // <Activity key={i} src={datas.imgPath} description={datas.description} time={datas.time} name={datas.name} />
+      <div style={{ margin: "10px" }} onClick={() => displayactivity(i)}>
+
+        <Image style={{ cursor: "pointer" }} key={i} src={`/${datas.imgPath}.png`} width={500} height={400} />
+      </div>
     )
   })
+
+  const modal = (
+    <div style={{ top: isModalVisible === false ? "-50vh" : "50vh", background: `url(/${activitiesData[positionOfActivityToDisplay].imgPath}.png) left bottom 50%` }} className={styles.actSubSection} >
+
+      <div className={styles.subsectiontext}>
+              
+        <h2>{activitiesData[positionOfActivityToDisplay].name}</h2>
+        <FontAwesomeIcon icon={faXmark} style={{ position: "absolute", top: "15px", right: "20px", height: "30px", cursor: "pointer" }} onClick={() => setIsModalVisible(false)} />
+        <p>{activitiesData[positionOfActivityToDisplay].description}</p>
+        <p>{activitiesData[positionOfActivityToDisplay].time}</p>
+      </div>
+    </div>
+  )
+
+  //prevents scrolling when modal is open
+
+  useEffect(() => {
+    if (isModalVisible) {
+      document.body.style.overflow = "hidden";
+      // document.body.style.filter = "blur(10px)"
+    } else {
+      document.body.style.overflow = "unset";
+      // document.body.style.filter = "blur(0)"
+    }
+  }, [isModalVisible]);
 
   return (
     <div id={props.id} className={styles.container}>
@@ -92,6 +135,7 @@ function Activities(props) {
         <h2>Nos activités</h2>
         <div className={styles.activitiesContainer}>
           {activitiesToDisplay2}
+          {modal}
         </div>
       </div>
     </div>

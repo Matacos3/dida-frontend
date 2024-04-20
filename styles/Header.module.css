@@ -1,6 +1,5 @@
 .headercontainer{
   background: rgb(38,138,125);
-  height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -10,6 +9,8 @@
   transition: 0.2s;
   font-size: 1.5rem;
   z-index: 2;
+  height: 40px;
+  font-size: 1.1rem;
 }
 
 .header{

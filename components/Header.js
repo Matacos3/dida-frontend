@@ -46,7 +46,7 @@ function Header(props) {
   }
 
   return (
-    <div className={styles.headercontainer} style={show ? bigStyle : smallStyle}>
+    <div className={styles.headercontainer} >
       <div className={styles.header}>
 
         <div>
@@ -63,7 +63,7 @@ function Header(props) {
           <span className={styles.link} id="4" onClick={()=>props.handleLink("section1")}>Plus</span>
         </div>
         <div className={styles.connectionAndNetworks}>
-          <Link href={"/"}><span className={styles.link}>Connexion</span></Link>
+          <Link href={"/login"}><span className={styles.link}>Connexion</span></Link>
           <Link href="https://www.facebook.com/DIDA.Rennes/?locale=fr_FR"><FontAwesomeIcon icon={faFacebook} /></Link>
         </div>
       </div>

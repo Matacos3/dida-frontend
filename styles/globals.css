@@ -6,7 +6,10 @@
   font-family: Italique;
   src: url("../Assets/Fonts/GARAIT.TTF");
 }
-
+:root{
+  --color1:rgb(38,138,125);
+  --color2: #B5EFE7;
+}
 * {
   box-sizing: border-box;
   padding: 0;
@@ -34,9 +37,19 @@ p{
 }
 
 .btn1{
-  background: rgb(38,138,125);
-  color: white;
-  
+  background: var(--color2);
+  color: black;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: 0.5s;
+
+}
+
+.btn1:hover{
+ transform: scale(1.1);
+ background: white;
 }
 
 .btn2{

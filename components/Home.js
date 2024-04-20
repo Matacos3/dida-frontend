@@ -14,6 +14,7 @@ import Faq from "../components/Faq"
 
 //a faire :
 //lien vers anciennes newletters, et page actualités
+
 //rubrique de portraits, de gens qui racontent leurs parcours, et que l’association à aidés, et aussi des bénévoles. Un portrait par newsLetters, mais qui soit aussi repris dans une rubrique. Portraits de dida
 
 //rubrique : événements à venir : des événements pour les bénévoles ,et aussi pour les bénéficiaires
