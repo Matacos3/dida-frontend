@@ -9,6 +9,8 @@
 :root{
   --color1:rgb(38,138,125);
   --color2: #B5EFE7;
+  --red:#da5252;
+  --error:#ffffff;
 }
 * {
   box-sizing: border-box;
